@@ -76,10 +76,8 @@ let vowelCount = (str) => {
     if (vowels.indexOf(chr.toLowerCase()) > -1) {
       if (results[chr] === undefined) {
         results[chr] = 1;
-        console.log('DNE',chr, results[chr]);
       } else {
         results[chr] += 1;
-        console.log('exists',chr, results[chr]);
       }
     }
   });
