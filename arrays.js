@@ -138,3 +138,75 @@ let extractFullName = (arr) => {
 console.log(`extractFullName`);
 console.log(extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}]));
 ////////////////////////////////////////////////////
+////// filter method
+let filter = (arr, callback) => {
+  let newArray = [];
+  for(let idx=0; idx < arr.length; idx++) {
+    if (callback(arr[idx], idx, arr)) {
+      newArray.push(arr[idx]);
+    }
+  }
+  return newArray;
+}
+
+console.log(filter(['aj','cole','ab','mk'], (name) => { return name === 'cole'}));
+
+let filterByValue = (arr, key) => {
+  return arr.filter((element, idx, arr) => {
+    return element[key];
+  });
+}
+console.log(`filterByValue`);
+console.log(filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner'));
+
+let find = (arr, valToFind) => {
+  let newArray = arr.filter((element, idx, arr) => {
+    return valToFind === element;
+  })
+  if (newArray.length === 0) {
+    return undefined;
+  }
+  return newArray;
+};
+
+console.log(`find`);
+console.log(find([1,2,3,4,5],10));
+
+let find2 = (arr, valToFind) => {
+  return arr.filter((element, idx, arr) => {
+    return valToFind === element;
+  })[0];
+};
+
+console.log(`find2`);
+console.log(find2([1,2,3,4,5],10));
+
+let findInObj = (arr, someKey, someValue) => {
+  return arr.filter((element, idx, arr) => {
+    return element[someKey] === someValue;
+  })[0];
+};
+
+console.log(`findInObj`);
+console.log(findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true));
+
+let removeVowels = (str) => {
+  let vowels = `aeiou`;
+  let characters = str.split("");
+  return characters.filter((char, idx, characters) => {
+    return vowels.indexOf(char.toLowerCase()) === -1;
+  }).join("");
+}
+console.log(`removeVowels`);
+console.log(removeVowels('Alfred Cole'));
+
+let doubleOddNumbers = (arr) => {
+  return arr.filter((number, idx, arr) => {
+    return number % 2 !== 0
+  }).map((number) => {
+    return number + number;
+  });
+}
+console.log(`doubleOddNumbers`);
+console.log(doubleOddNumbers([1,2,3,4,5]));
+console.log(doubleOddNumbers([4,4,4,4,4]));
