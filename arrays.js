@@ -87,4 +87,54 @@ let vowelCount = (str) => {
 
 console.log(`vowelCount`);
 console.log(vowelCount('Alfred Speller'));
-///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////// map method
+/// user for transformation
+/// always returns a new arry of the same length
+
+console.log(`map implementation`);
+
+let map = (arr, callback) => {
+  let newArray = [];
+  for(let idx=0; idx<arr.length; idx++) {
+    newArray.push(callback(arr[idx], idx, arr));
+  }
+  return newArray;
+}
+
+console.log(map([1,2,3], (x) => { return x * 10;}));
+
+var doubleValuesMap = (arr) => {
+  return arr.map((element, idx, arr) => {
+    return element * 2;
+  });
+};
+
+console.log(`doubleValuesMap`);
+console.log(doubleValuesMap([19,45,88]));
+
+var valTimesIndex = (arr) => {
+  return arr.map((element, idx, arr) => {
+    return element * idx;
+  });
+}
+console.log(`valTimesIndex`);
+console.log(valTimesIndex([1,-2,-3]));
+
+var extractKey = (arr,key) => {
+  return arr.map((val, idx, arr) => {
+    return val[key];
+  });
+};
+
+console.log(`extractKey`);
+console.log(extractKey([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'name'));
+
+let extractFullName = (arr) => {
+  return arr.map((val, idx, arr) => {
+    return `${val.first} ${val.last}`;
+  });
+};
+
+console.log(`extractFullName`);
+console.log(extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}]));
+////////////////////////////////////////////////////
