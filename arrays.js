@@ -210,3 +210,105 @@ let doubleOddNumbers = (arr) => {
 console.log(`doubleOddNumbers`);
 console.log(doubleOddNumbers([1,2,3,4,5]));
 console.log(doubleOddNumbers([4,4,4,4,4]));
+
+////////////////////////////////////////////////////////////
+///// some & every method
+
+// my implementation of the some method
+var some = (arr, callback) => {
+  for(let idx=0; idx<arr.length; idx++){
+    if (callback(arr[idx],idx,arr)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// my implementation of the very method
+var every = (arr, callback) => {
+  for(let idx=0;idx<arr.length; idx++){
+    if (!callback(arr[idx], idx, arr)) {
+      return false;
+    }
+    return true;
+  }
+}
+
+var hasOddNumber = (arr) => {
+  return arr.some((val, idx, arr) => {
+    if (val % 2 !== 0) {
+      return true;
+    }
+    return false;
+  });
+};
+console.log(`hasOddNumber([1,2,2,2,2,2,4])`);
+console.log(hasOddNumber([1,2,2,2,2,2,4]));
+console.log(`hasOddNumber([2,2,2,2,2,2,4])`);
+console.log(hasOddNumber([2,2,2,2,2,2,4]));
+
+var hasAZero = (numbers) => {
+  let characters = numbers.toString().split("");
+  return characters.some((val, idx)=>{
+    return val === '0';
+  });
+}
+console.log(`hasAZero(3332123213101232321)`);
+console.log(hasAZero(3332123213101232321));
+console.log(`hasAZero(1212121)`);
+console.log(hasAZero(1212121));
+
+var hasOnlyOddNumbers = (arr) => {
+  return arr.every((val, idx, arr) => {
+    return val % 2 !== 0;
+  });
+}
+
+console.log(`hasOnlyOddNumbers([1,3,5,7])`);
+console.log(hasOnlyOddNumbers([1,3,5,7]));
+console.log(`hasOnlyOddNumbers([1,2,3,5,7])`);
+console.log(hasOnlyOddNumbers([1,2,3,5,7]));
+
+var hasNoDuplicates = (arr) => {
+  return arr.every((val, idx, arr) => {
+    return arr.indexOf(val) === arr.lastIndexOf(val);
+  });
+}
+
+console.log(`hasNoDuplicates([1,2,3,1])`);
+console.log(hasNoDuplicates([1,2,3,1]));
+console.log(`hasNoDuplicates([1,2,3])`);
+console.log(hasNoDuplicates([1,2,3]));
+
+var arr = [
+    {title: "Instructor", first: 'Elie', last:"Schoppik"},
+    {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true},
+    {title: "Instructor", first: 'Matt', last:"Lane"},
+    {title: "Instructor", first: 'Colt', last:"Steele", isCatOwner: true}
+]
+var hasCertainKey = (arr, key) => {
+  return arr.every((val,idx,arr) => {
+    return val[key];
+  });
+}
+console.log(`hasCertainKey(arr,'first')`);
+console.log(hasCertainKey(arr,'first'));
+console.log(`hasCertainKey(arr,'isCatOwner')`);
+console.log(hasCertainKey(arr,'isCatOwner'));
+
+var arr1 = [
+    {title: "Instructor", first: 'Elie', last:"Schoppik"},
+    {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true},
+    {title: "Instructor", first: 'Matt', last:"Lane"},
+    {title: "Instructor", first: 'Colt', last:"Steele", isCatOwner: true}
+]
+var hasCertainValue = (arr1, key, match) => {
+  return arr1.every((val, idx, arr) => {
+    return val[key] === match;
+  });
+};
+
+console.log(`hasCertainValue(arr1,'title','Instructor')`);
+console.log(hasCertainValue(arr1,'title','Instructor'));
+console.log(`hasCertainValue(arr1,'first','Elie')`);
+console.log(hasCertainValue(arr1,'first','Elie'));
