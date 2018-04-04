@@ -351,3 +351,18 @@ console.log(hasCertainValue(arr1,'title','Instructor'));
 console.log(`hasCertainValue(arr1,'first','Elie')`);
 console.log(hasCertainValue(arr1,'first','Elie'));
 console.log(divider);
+
+/////////////////////////////////////////////////////////
+//// reduce method
+
+// Write a function called extractValue which accepts an array of objects and a key and returns a new array with the value of each object at the key.
+
+var extractValue = (arr, key) => {
+  return arr.reduce((acc, val, idx, arr) => {
+    acc.push(val[key]);
+    return acc;
+  }, []);
+};
+
+console.log(`extractValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}],'name')`);
+console.log(extractValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}],'name'));
