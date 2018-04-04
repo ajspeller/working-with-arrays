@@ -473,3 +473,34 @@ console.table(vowelCountReduce('Sheila A Speller'));
 console.table(vowelCountReduce('Alfred B Speller'));
 console.table(vowelCountReduce('Cole B Speller'));
 console.log(divider);
+
+/*
+Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
+
+Examples:
+    var arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}];
+    
+    addKeyAndValue(arr, 'title', 'Instructor') // 
+      [
+        {title: 'Instructor', name: 'Elie'}, 
+        {title: 'Instructor', name: 'Tim'}, 
+        {title: 'Instructor', name: 'Matt'}, 
+        {title: 'Instructor', name: 'Colt'}
+       ]
+*/
+
+var addKeyAndValueReducer = (arr, key, value) => {
+  return arr.reduce((acc, nextItem, idx, arr) => {
+    nextItem[key] = value;
+    acc.push(nextItem);
+    return acc;
+  }, []);
+};
+
+console.table(
+  addKeyAndValueReducer(
+    [{ name: 'Elie' }, { name: 'Tim' }, { name: 'Matt' }, { name: 'Colt' }],
+    'title',
+    'Instructor'
+  )
+);
